@@ -12,7 +12,7 @@ def dump_pickle(obj, filename: str):
 
 
 def read_dataframe(filename: str):
-    df = pd.read_parquet(filename)
+    df = pd.read_parquet(filename,engine='fastparquet')
 
     df['duration'] = df['lpep_dropoff_datetime'] - df['lpep_pickup_datetime']
     df.duration = df.duration.apply(lambda td: td.total_seconds() / 60)
